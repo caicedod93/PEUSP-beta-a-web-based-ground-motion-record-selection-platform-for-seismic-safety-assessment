@@ -10,6 +10,25 @@ The output of the software includes selected record metadata, scaling factors, p
 
 ---
 
+## Associated publication
+
+This repository contains the source code associated with the SoftwareX publication:
+
+**PEUSP-beta: a web-based ground motion record selection platform for seismic safety assessment**
+
+**Authors:** Daniel Caicedo, Shaghayegh Karimzadeh, Vasco Bernardo, Paulo B. Lourenço  
+**Journal:** SoftwareX  
+**Year:** 2026  
+**Volume:** 35  
+**Article number:** 102790  
+**DOI:** [10.1016/j.softx.2026.102790](https://doi.org/10.1016/j.softx.2026.102790)
+
+Repository archive:
+
+[https://doi.org/10.5281/zenodo.19697334](https://doi.org/10.5281/zenodo.19697334)
+
+---
+
 ## Authors
 
 - **Daniel Caicedo**  
@@ -26,72 +45,83 @@ The output of the software includes selected record metadata, scaling factors, p
 
 ---
 
-## Associated publication
-
-This repository contains the source code associated with the SoftwareX publication:
-
-**PEUSP-beta: a web-based ground motion record selection platform for seismic safety assessment**
-
-SoftwareX, 2026.
-
-DOI: `10.1016/j.softx.2026.102790`
-
-Repository archive: `https://doi.org/10.5281/zenodo.19697334`
-
----
-
 ## Main features
 
 - Web-based graphical user interface developed with Streamlit.
-- Spectral matching of ground motion suites using constant-amplitude scaling.
+- Ground motion record selection for seismic safety assessment.
+- Spectral matching using constant-amplitude scaling.
 - Support for 1D and 2D horizontal ground motion selection.
 - Code-based target spectra according to:
-  - EN 1998-1:2004
-  - EN 1998-1-1:2024
+  - EN 1998-1:2004;
+  - EN 1998-1-1:2024.
 - User-defined target spectrum option.
 - Scenario-based selection using:
-  - Moment magnitude, Mw
-  - Joyner–Boore distance, Rjb
-  - VS30-based soil class
-  - Faulting mechanism
-  - Focal depth
+  - moment magnitude, Mw;
+  - Joyner–Boore distance, Rjb;
+  - VS30-based soil class;
+  - faulting mechanism;
+  - focal depth.
 - Optimisation-based record selection and scaling.
-- Automatic download and processing of records from the European Strong-Motion database.
+- Automatic download and processing of selected records from the European Strong-Motion database.
 - Export of selected metadata, processed records, and response spectrum plots.
 - Preparation of records for subsequent nonlinear dynamic analyses.
 
 ---
 
-## Workflows
+## Software workflows
 
 PEUSP-beta currently supports two main workflows:
 
-### 1. Spectral matching
+1. **Spectral matching**
+2. **Scenario-based selection**
 
-The spectral-matching module selects and scales ground motions to match a target response spectrum over a user-defined period range. The user can choose between:
+---
 
-- **1D selection**, based on a single horizontal component.
+## Spectral-matching workflow
+
+The spectral-matching workflow selects and scales ground motions to match a target response spectrum over a user-defined period range.
+
+The user can select between:
+
+- **1D selection**, based on one horizontal component;
 - **2D selection**, based on the geometric mean of the two horizontal components.
 
-The target spectrum can be defined using:
+The target spectrum can be defined according to:
 
-- EN 1998-1:2004;
-- EN 1998-1-1:2024;
-- a user-defined target spectrum uploaded by the user.
+- **EN 1998-1:2004**;
+- **EN 1998-1-1:2024**;
+- a **user-defined target spectrum** uploaded by the user.
 
-The user can also define scaling limits, admissible bounds on the mean spectrum, admissible bounds on individual spectra, and additional seismological filtering conditions.
+The user can also define:
 
-### 2. Scenario-based selection
+- number of records;
+- matching period range;
+- soil class filtering;
+- scaling factor limits;
+- admissible lower and upper bounds for the mean spectrum;
+- admissible lower and upper bounds for individual spectra;
+- moment magnitude range;
+- distance range;
+- faulting mechanism;
+- focal depth range.
 
-The scenario-based workflow selects records according to user-defined seismological and site-related conditions. These may include:
+The optimisation procedure identifies a suite of records and corresponding scaling factors that minimise the mismatch between the mean spectrum of the selected suite and the target spectrum, while satisfying the imposed constraints.
+
+---
+
+## Scenario-based workflow
+
+The scenario-based workflow selects records according to user-defined seismological and site-related conditions. This workflow is especially useful when the preservation of seismological consistency is important, for example in advanced performance-based earthquake engineering applications.
+
+The scenario-based workflow allows filtering according to:
 
 - moment magnitude;
 - Joyner–Boore distance;
-- soil class based on VS30;
+- VS30-based soil class;
 - faulting mechanism;
 - focal depth.
 
-This workflow is especially useful for advanced performance-based earthquake engineering applications, incremental dynamic analysis, cloud-based analyses, and other cases where preserving seismological consistency is important.
+The selected records are normalised with respect to their individual peak ground acceleration. This allows users to subsequently scale the records to different intensity levels, for example in incremental dynamic analysis or cloud-based nonlinear dynamic analyses.
 
 ---
 
