@@ -1,5 +1,4 @@
 # PEUSP-beta-a-web-based-ground-motion-record-selection-platform-for-seismic-safety-assessment
-# PEUSP_beta
 
 **PEUSP_beta** is a Python-based web application for the selection and scaling of earthquake ground motion records for seismic safety assessment and performance-based earthquake engineering applications.
 
